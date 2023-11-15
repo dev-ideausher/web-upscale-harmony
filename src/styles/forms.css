@@ -1,0 +1,43 @@
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type="email"],
+input[type="text"],
+input[type="password"] {
+    border-radius: 4px;
+    border: 1px solid #DEDED2;
+    height: 40px;
+    width: 100%;
+    outline: none;
+    padding: 0 10px;
+}
+
+input[type="checkbox"] {
+    width: 17px;
+    height: 17px;
+}
+
+textarea {
+    border-radius: 10px;
+    border: 1px solid #DEDED4;
+    background: #FFF;
+    font-size: 17px;
+    font-weight: 400;
+    color: #838383;
+    resize: none;
+    padding: 15px;
+    outline: none;
+}
+
+.input-shadow:focus {
+    background: var(--white) !important;
+    box-shadow: 0px 4px 14px 0px rgba(0, 0, 0, 0.05);
+}
+
+.drop-down-input:focus:parent {
+    background: var(--white) !important;
+    box-shadow: 0px 4px 14px 0px rgba(0, 0, 0, 0.05);
+}
