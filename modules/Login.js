@@ -1,7 +1,9 @@
 import Image from 'next/image'
+import { useRouter } from 'next/router'
 import React from 'react'
 
 export default function Login() {
+  const router = useRouter()
   return (
     <div className='container row h-per-100 d-align-center d-justify-center'>
         <div className='col-12 row d-flex-column d-align-center'>
@@ -15,7 +17,7 @@ export default function Login() {
                 <button className='btn-default h5 text-primary f-600'>Forgot Password ?</button>
               </div>
               <input className='' type='password' />
-              <button className='mt-8 btn btn-primary col-12'>
+              <button className='mt-8 btn btn-primary col-12' onClick={()=> router.push("/dashboard")}>
                 Sign In
               </button>
             </div>
