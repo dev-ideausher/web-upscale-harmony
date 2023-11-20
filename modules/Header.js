@@ -9,7 +9,7 @@ export default function Header() {
         <div className='container'>
             <div className='col-12 row d-justify-space-between'>
                 <Image src={"/images/upscale_logo.svg"} width={66} height={32} className='cursor-pointer' onClick={()=> router.push("dashboard")}></Image>
-                <Image src={"/images/avatar.png"} height={40} width={40} />
+                <Image src={"/images/Avatar.png"} height={40} width={40} />
             </div>
         </div>
     </div>
