@@ -3,11 +3,11 @@ import multer from 'multer';
 import path from 'path';
 import fs from 'fs';
 
-const uploadDir = './uploads'; // specify your upload directory
+const uploadDir = './public/uploads'; // specify your upload directory inside the public folder
 
 // Ensure that the upload directory exists
 if (!fs.existsSync(uploadDir)) {
-  fs.mkdirSync(uploadDir);
+  fs.mkdirSync(uploadDir, { recursive: true });
 }
 
 const allowedFileExtensions = ['.yaml', '.yml', '.txt'];
@@ -58,7 +58,7 @@ export default async function handler(req, res) {
 
       res.status(200).json({ message: 'Files uploaded successfully.' });
     } catch (error) {
-        console.log(error)
+      console.error(error);
       res.status(500).json({ error: 'Error uploading files.' });
     }
   } else {

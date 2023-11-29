@@ -14,7 +14,7 @@ export default async function handler(req, res) {
       const body = bodyBuffer.toString('utf-8');
       const { fileName, content } = JSON.parse(body);
 
-      const filePath = `./uploads/${fileName}`;
+      const filePath = `./public/uploads/${fileName}`;
 
       fs.writeFile(filePath, content, (err) => {
         if (err) {
