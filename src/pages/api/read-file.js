@@ -8,7 +8,7 @@ export default function handler(req, res) {
       return res.status(400).json({ error: 'Missing fileName parameter.' });
     }
 
-    const filePath = `./uploads/${fileName}`;
+    const filePath = `./public/uploads/${fileName}`;
 
     fs.readFile(filePath, 'utf-8', (err, content) => {
       if (err) {

@@ -1,7 +1,8 @@
 .container {
-    max-width: 1200px;
+    max-width: 1230px;
     width: 100%;
     margin: 0 auto;
+    padding: 0 15px;
 }
 
 .upscale-container {
@@ -70,4 +71,20 @@
     display: grid;
     grid-template-columns: 43% 54%;
     gap: 3%;
+}
+
+.uploader {
+    position: absolute;
+    margin: 0;
+    padding: 0;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    outline: none;
+    opacity: 0;
+    object-fit: cover;
+    cursor: pointer;
+    z-index: 2;
 }

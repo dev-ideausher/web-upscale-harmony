@@ -3,7 +3,7 @@ import multer from 'multer';
 import path from 'path';
 import fs from 'fs';
 
-const uploadDir = './uploads'; // specify your upload directory
+const uploadDir = './public/uploads'; // specify your upload directory
 
 // Ensure that the upload directory exists
 if (!fs.existsSync(uploadDir)) {
