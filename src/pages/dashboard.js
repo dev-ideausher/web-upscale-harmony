@@ -98,7 +98,7 @@ export default function Dashboard() {
         {tabs=="config" && <>
           <div className='row d-align-center d-justify-space-between'>
             <div className='row d-d-align-center'>
-              <h4 className='op-06'>Dashboard</h4>
+              <h4 className='font-13 text-grey-light'>Dashboard</h4>
             </div>
             <button className='btn btn-primary col-2' onClick={()=> setTabs("upload")}> Upload Files</button>
           </div>

@@ -3,6 +3,7 @@
   --secondary: #D76700;
   --black: #000;
   --grey: #F2F2F2;
+  --grey-light: #838383;
   --white: #FFF;
   --head: #EEF4FF;
 }
@@ -38,6 +39,10 @@ a {
 /* main class styling */
 .text-primary {
   color: var(--primary);
+}
+
+.text-grey-light {
+  color: var(--grey-light);
 }
 
 .bg-head {
