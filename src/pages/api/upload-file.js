@@ -1,32 +1,24 @@
-// pages/api/upload.js
 import multer from 'multer';
-// import path from 'path';
 import fs from 'fs';
-const path = require('path');
-const uploadDir = path.join(process.cwd(), 'public', 'uploads');
+import path from 'path';
 
-// const uploadDir = './public/uploads'; // specify your upload directory
+const tmpUploadDir = '/tmp/uploads'; // Temporary storage directory
 
-// Ensure that the upload directory exists
-if (!fs.existsSync(uploadDir)) {
-  fs.mkdirSync(uploadDir);
+// Ensure that the temporary upload directory exists
+if (!fs.existsSync(tmpUploadDir)) {
+  fs.mkdirSync(tmpUploadDir, { recursive: true });
+}
+
+const publicUploadDir = path.join(process.cwd(), 'public', 'uploads'); // Public upload directory
+
+// Ensure that the public upload directory exists
+if (!fs.existsSync(publicUploadDir)) {
+  fs.mkdirSync(publicUploadDir, { recursive: true });
 }
 
 const allowedFileExtensions = ['.yaml', '.yml', '.txt'];
 
-const storage = multer.diskStorage({
-  destination: (req, file, cb) => {
-    cb(null, uploadDir);
-  },
-  filename: (req, file, cb) => {
-    const ext = path.extname(file.originalname);
-    if (allowedFileExtensions.includes(ext.toLowerCase())) {
-      cb(null, file.originalname);
-    } else {
-      cb(new Error('Invalid file type.'));
-    }
-  },
-});
+const storage = multer.memoryStorage();
 
 const uploadMiddleware = multer({
   storage,
@@ -38,11 +30,11 @@ const uploadMiddleware = multer({
       cb(new Error('Invalid file type.'));
     }
   },
-}).array('files', 5); // 'files' is the field name for multiple files, 5 is the maximum number of files
+}).array('files', 5);
 
 export const config = {
   api: {
-    bodyParser: false, // Disabling built-in bodyParser
+    bodyParser: false,
   },
 };
 
@@ -58,9 +50,27 @@ export default async function handler(req, res) {
         });
       });
 
+      // Move files from /tmp to public/uploads
+      await Promise.all(
+        req.files.map(async (file) => {
+          const ext = path.extname(file.originalname);
+          const fileName = file.originalname; // Keep the same file name
+          const tmpFilePath = path.join(tmpUploadDir, fileName);
+          const publicFilePath = path.join(publicUploadDir, fileName);
+
+          // Write file to public/uploads
+          fs.writeFileSync(publicFilePath, file.buffer);
+
+          // Unlink the file from the temporary directory
+          if (fs.existsSync(tmpFilePath)) {
+            fs.unlinkSync(tmpFilePath);
+          }
+        })
+      );
+
       res.status(200).json({ message: 'Files uploaded successfully.' });
     } catch (error) {
-        console.log(error)
+      console.error(error);
       res.status(500).json({ error: 'Error uploading files.' });
     }
   } else {
