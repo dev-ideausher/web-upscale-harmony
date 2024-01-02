@@ -17,7 +17,7 @@ export default function Dashboard() {
       // if(allowedFileExtensions.includes(e.target.files[0].name.toLowerCase())){
         if(e.target.files[0].type == "text/plain" || type[1] == "yaml" || type[1] == "yml"){
           setFile(e.target.files[0]);
-          uploadFile(e.target.files[0])
+          uploadFile(e.target.files[0]);
         }else{
           // toast.error("File is not supported"),{
           //     toastId:"upload-error-1"
@@ -30,6 +30,7 @@ export default function Dashboard() {
         // }
     }
   }
+
   const uploadFile = (file) => {
     const formData = new FormData();
     formData.append('files', file);
@@ -65,7 +66,7 @@ export default function Dashboard() {
         { tabs == "upload" && <>
           <div className='row d-align-center d-justify-space-between'>
             <div className='row d-d-align-center'>
-              <span className='font-13'>Dashboard</span>
+              <h5 className='f-600 op-07'>Dashboard </h5>
             </div>
             <button className='btn btn-primary col-2' onClick={()=> setTabs("upload")}> Upload Files</button>
           </div>
@@ -97,8 +98,11 @@ export default function Dashboard() {
 
         {tabs=="config" && <>
           <div className='row d-align-center d-justify-space-between'>
-            <div className='row d-d-align-center'>
-              <h4 className='font-13 text-grey-light'>Dashboard</h4>
+            <div className='row d-align-center'>
+              <h5 className='cursor-pointer op-07'>All config file</h5>
+              <svg className='ml-2 mr-2' xmlns="http://www.w3.org/2000/svg" width="6" height="9" viewBox="0 0 6 9" fill="none">
+                <path d="M1.25 8L4.75 4.5L1.25 1" stroke="#838383" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
             </div>
             <button className='btn btn-primary col-2' onClick={()=> setTabs("upload")}> Upload Files</button>
           </div>

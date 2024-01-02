@@ -7,7 +7,7 @@ export default function Login() {
   return (
     <div className='container row h-per-100 d-align-center d-justify-center'>
         <div className='col-12 row d-flex-column d-align-center'>
-            <Image src="/images/Upscale-Enclave.svg" width={146} height={72}></Image>
+            <Image alt="logo" src="/images/Upscale-Enclave.svg" width={146} height={72}></Image>
             <h1 className='f-600 col-12 row d-justify-center mt-8'>Sign In to Upscale Enclave</h1>
             <div className='login_module p-6'>
               <h4 className='mb-4'>Username</h4>
