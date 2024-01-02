@@ -1,8 +1,8 @@
 // pages/api/upload.js
 import multer from 'multer';
-import path from 'path';
+// import path from 'path';
 import fs from 'fs';
-// const path = require('path');
+const path = require('path');
 const uploadDir = path.join(process.cwd(), 'public', 'uploads');
 
 // const uploadDir = './public/uploads'; // specify your upload directory
