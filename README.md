@@ -39,3 +39,5 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 
 ## Standalone deployment under Nginx Instructions
 this is a temporary placeholder for the build instructions using nginx and docker for the actual upscale deployment... (SRQ)
+
+```docker build -t test.001 -f docker/Dockerfile ```
