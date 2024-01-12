@@ -1,6 +1,6 @@
 FROM node:lts-bookworm as buildenv
 
-LABEL org.opencontainers.image.authors="S. Ryan Quick <ryan@providentiaworldwide.com>"
+LABEL org.opencontainers.image.authors="S. Ryan Quick <ryan@providentiaworldwide.com>, Idea Usher"
 ARG DEBIAN_FRONTEND=noninteractive
 ENV NEXT_TELEMETRY_DISABLED 1
 ENV NODE_ENV production
